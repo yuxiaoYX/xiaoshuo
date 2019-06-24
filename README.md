@@ -1,6 +1,7 @@
 # xiaoshuo
-##设置数据库为mysql
-settings.py中设置
+---
+####设置数据库为mysql
+```settings.py中设置
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -10,4 +11,4 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
     }
-}
+}```
