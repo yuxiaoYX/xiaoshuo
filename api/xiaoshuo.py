@@ -56,14 +56,5 @@ if __name__ == '__main__':
 a=[['剑来1', '剑来2', '剑来3'], ['烽火戏诸侯', '老油条本尊', '暮鼓晨钟']]
 b=['bookName','bookAuthor']
 
-c=[
-    {'bookName':'剑来1','bookAuthor':'烽火戏诸侯'},
-    {'bookName':'剑来2','bookAuthor':'老油条本尊'},
-    {'bookName':'剑来3','bookAuthor':'暮鼓晨钟'},
-]
-
-for i in a:
-    print(a)
-    for ii in i :
-        print(i)
-
+c=[dict(zip(b,i) for i in zip(*a))]
+print(c)
