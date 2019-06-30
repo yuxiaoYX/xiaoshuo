@@ -26,3 +26,6 @@ class bookSearch(models.Model):
     
     def __str__(self):
         return self.source_name
+
+class bookIntroduce(models.Model):
+    
