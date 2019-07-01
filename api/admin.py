@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import bookUser, bookSearch
+from .models import bookUser, bookSearch, bookIntroduce
 # Register your models here.
 
 
@@ -13,8 +13,22 @@ admin.site.register(bookUser, userAdmin)
 class searchAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ['source_name']}),
-        ('源搜索访问规则', {'fields': ['requests_url', 'requests_method', 'requests_data', 'requests_charset']}),
+        ('源搜索访问规则', {'fields': [
+         'requests_url', 'requests_method', 'requests_data', 'requests_charset']}),
         ('源搜索过滤规则', {'fields': ['search_key', 'search_value']})
     ]
 
+
 admin.site.register(bookSearch, searchAdmin)
+
+
+class introduceAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('源小说介绍', {'fields': ['source_name']}),
+        ('源小说介绍访问规则', {'fields': [
+         'requests_method', 'requests_data', 'requests_charset']}),
+        ('源小说介绍过滤规则', {'fields': ['introduce_key', 'introduce_value']})
+    ]
+
+
+admin.site.register(bookIntroduce, introduceAdmin)
