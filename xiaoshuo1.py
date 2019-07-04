@@ -56,6 +56,30 @@ def book_jieshao(book_data):
     else:
         return {'state': '搜索失败'}
 
+def book_list(book_data):
+    list_data=parse_url(book_data)
+    
+    # pattern=re.compile(r'<li><a href *= *[""]*(\S+)[""].*\>(.[^\<]*)?\</a></li>')
+    # result = pattern.findall(res.text)
+    pattern=re.compile(book_data['list_kv'])
+    result=pattern.findall(list_data.text)
+    return result
+
+def book_content(book_data):
+    content_data=parse_url(book_data)
+
+    pattern=re.compile(book_data['content_kv'])
+    result=pattern.findall(content_data.text)
+    if result:
+        result=result[0].replace('&nbsp;','')
+        result=result.split('<br/>')
+        return result
+    else:
+        return {'state': '获取内容失败'}
+    
+
 
 if __name__ == '__main__':
+    # book_list() 
+    # book_content()
     pass

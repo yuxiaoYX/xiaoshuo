@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import bookUser, bookSearch, bookIntroduce
+from .models import bookUser, bookSearch, bookIntroduce,bookList,bookContent
 # Register your models here.
 
 
@@ -32,3 +32,26 @@ class introduceAdmin(admin.ModelAdmin):
 
 
 admin.site.register(bookIntroduce, introduceAdmin)
+
+class listAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('源小说列表', {'fields': ['source_name']}),
+        ('源小说列表访问规则', {'fields': [
+         'requests_url','requests_method', 'requests_data', 'requests_charset']}),
+        ('源小说列表正则', {'fields': ['list_kv']})
+    ]
+
+
+admin.site.register(bookList, listAdmin)
+
+
+class contentAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('源小说章节内容', {'fields': ['source_name']}),
+        ('源小说章节内容访问规则', {'fields': [
+         'requests_method', 'requests_data', 'requests_charset']}),
+        ('源小说章节内容正则', {'fields': ['content_kv']})
+    ]
+
+
+admin.site.register(bookContent, contentAdmin)
