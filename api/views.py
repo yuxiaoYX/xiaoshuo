@@ -7,7 +7,7 @@ import json
 
 # Create your views here.
 
-
+#没用
 def index(request):
     data = serializers.serialize("json", bookUser.objects.all(), ensure_ascii=False)
     return HttpResponse(data, content_type="application/json,charset=utf-8")
