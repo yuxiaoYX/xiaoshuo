@@ -56,3 +56,14 @@ class bookContent(models.Model):
     content_kv=models.TextField('源小说章节内容')
     def __str__(self):
         return self.source_name
+
+
+class bookSource(models.Model):
+    name=models.CharField('小说源名字',max_length=40)
+    host=models.CharField('源网站网址',max_length=50)
+    sourceEncoding=models.CharField('编码方式',max_length=10,default='utf-8')
+    # 搜索页面
+    searchUrl=models.CharField('搜索链接',max_length=100)
+    searchMethod=models.CharField('访问方式',max_length=10,default='get')
+    searchPostParams=models.CharField('POST参数',max_length=100,default='{}')
+    

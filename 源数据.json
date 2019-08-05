@@ -1,0 +1,73 @@
+[
+    {
+        // 小说源名字
+        "name": "爱奇文学",
+        // 书源作者
+        "author": "官方",
+        // 提示
+        "tips": "30秒内只能搜索一次",
+        // 源网站网址(PS: 最后不要加 /)
+        "host": "https://www.i7wx.com/",
+        // 搜索页面开始
+        // 搜索链接
+        "searchUrl": "https://www.i7wx.com/modules/article/search.php?searchkey=%s&searchtype=articlename",
+        // 搜索参数编码, default: UTF-8
+        "searchEncoding": "gbk",
+        // POST参数
+        "searchPostParams": null,
+        // 搜索 user-agent(默认使用桌面)
+        "searchUserAgent": null,
+        // 书籍搜索内容
+        "books": "//*[@id=\"conn\"]/table",
+        // 用xpath取数据，键值一一对应
+        //书籍名字，作者，最新章节，更新时间，书籍连接
+        "searchKey": "bookName,bookAuthor,bookNewestChapterName,bookUpdateTime,detailUrl",
+        "searchValue": "//*[@id=\"nr\"]/td[1]/a/text(),//*[@id=\"nr\"]/td[3]/text(),//*[@id=\"nr\"]/td[2]/a/text(),//*[@id=\"nr\"]/td[5]/text(),//*[@id=\"nr\"]/td[1]/a/@href",
+        // 搜索是否会直接跳转到书籍详情
+        "searchToDetail": "true",
+        // 搜索结束
+        // 详情页开始,书籍名字，作者，介绍，封面图片，类型，章节列表链接，最新更新时间，最新章节名字
+        "detailKey": "title,author,detailBookIntro,cover,bookType,chapterLink,modifyTime,lastChapter",
+        "datailValue": "//*[@id=\"bookinfo\"]/div[2]/div[1]/h1/text(),//*[@id=\"author\"]/a/text(),
+        //*[@id=\"bookintro\"]//p//text(),//*[@id=\"bookimg\"]/img/@src,//*[@id=\"count\"]/span[1]/text(),
+        //*[@id=\"reader\"]/a/@href,//*[@id=\"bookinfo\"]/div[2]/div[5]/span[1]/text(),//*[@id=\"bookinfo\"]/div[2]/div[5]/span[2]/a/text()",
+        // 如果要进行详情解析, detailChaptersUrl 必须有值
+        "detailChaptersUrl": null,
+        "detailBookIcon": null,
+        // 如果要支持搜索解析详情, detailBookName 必须有值
+        "detailBookName": null,
+        "detailBookDesc": null,
+        // 如果要支持搜索解析详情, detailBookAuthor 必须有值
+        "detailBookAuthor": null,
+        "detailBookCategory": null,
+        "detailBookUpdateTime": null,
+        "detailBookLastChapterName": null,
+        // 详情页结束
+        // 使用 js 方式获取章节列表(性能差, 如非必要, 不建议使用)
+        "javascriptTOC": "true",
+        // js 获取数据延时(毫秒)
+        "TOCDelay": 300,
+        // 章节列表e
+        "chapters": "#list li a",
+        // 章节名称
+        "chapterName": "@@@",
+        // 章节链接
+        "chapterUrl": "@@@abs:href",
+        // 章节倒序
+        "chaptersReverse": "true",
+        // 章节重新排序
+        "resortChapters": "true",
+        // 删除重复章节
+        "deleteDuplicatedChapters": "true",
+        // 使用 js 方式获取章节内容(性能差, 如非必要, 不建议使用)
+        "javascriptContent": "true",
+        // js 获取数据延时(毫秒)
+        "contentDelay": 300,
+        // 文章内容
+        "content": "@#content@0@",
+        // 内容删除节点(使用)
+        "contentRemove": "[\"a\",\".mark\"]",
+        // 内容替换
+        "contentReplace": "[{\"first\":\"十\\\\*\\\\*([岁|年|月|日|周|天|个|米|丈|里]*?)\",\"second\":\"十八九$1\"},{\"first\":\"你\",\"second\":\"是谁?\"}]",
+    }
+]

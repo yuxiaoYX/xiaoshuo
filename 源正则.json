@@ -1,0 +1,70 @@
+{
+    "爱奇文学": {
+        // 小说源名字
+        "name": "爱奇文学",
+        // 书源作者
+        "author": "官方",
+        // 提示
+        "tips": "30秒内只能搜索一次",
+        // 源网站网址(PS: 最后不要加 /)
+        "host": "https://www.i7wx.com/",
+        // 参数编码, default: UTF-8
+        "Encoding": "gbk",
+        // user-agent(默认使用桌面)
+        "UserAgent": null,
+        // 搜索页面开始
+        "search": {
+            // 搜索链接
+            "searchUrl": "https://www.i7wx.com/modules/article/search.php?searchkey=%s&searchtype=articlename",
+            // POST参数
+            "searchPostParams": null,
+            // 书籍搜索内容
+            "books": "//*[@id=\"conn\"]/table",
+            // 用xpath取数据，键值一一对应
+            //书籍名字，作者，最新章节，更新时间，书籍连接
+            "searchKey": "bookName,bookAuthor,bookNewestChapterName,bookUpdateTime,detailUrl",
+            "searchValue": "//*[@id=\"nr\"]/td[1]/a/text(),//*[@id=\"nr\"]/td[3]/text(),//*[@id=\"nr\"]/td[2]/a/text(),//*[@id=\"nr\"]/td[5]/text(),//*[@id=\"nr\"]/td[1]/a/@href",
+            // 搜索是否会直接跳转到书籍详情
+            "searchToDetail": "true",
+        },
+        // 搜索结束
+        // 详情页开始
+        "detailBooks": "//*[@id=\"bookinfo\"]", //截取需要的内容，防止内容过多，影响下面取值的速度
+        "details": {
+            "title": "//*[@id=\"bookinfo\"]/div[2]/div[1]/h1/text()", //书籍名字
+            "author": "//*[@id=\"author\"]/a/text()", //作者
+            "intro": "//*[@id=\"bookintro\"]/p/text()", //简介
+            "cover": "//div[1]/div/img/@src", //封面图片
+            "Type": "//div[2]/div[2]/span[1]/text()", //小说类型
+            "chapterLink": "//*[@id=\"reader\"]/a/@href", //章节列表链接
+            "lastChapter": "//div[2]/div[5]/span[2]/a/text()", //最新章节名字
+            "modifyTime": "//div[2]/div[5]/span[1]/text()", //更新时间
+            "state": "//div[2]/div[2]/span[6]/text()" //更新状态
+        },
+        // 详情页结束
+        // 章节列表开始
+        "chapters": {
+            "chapterList": "<li><a href *= *['\"]*(\\S+)[\"'].*\\>(.[^\\<]*)?\\</a></li>",
+            // 章节名称
+            "chapterName": "",
+            // 章节链接
+            "chapterUrl": "",
+            // 章节倒序
+            "chaptersReverse": "true",
+            // 章节重新排序
+            "resortChapters": "true",
+            // 删除重复章节
+            "deleteDuplicatedChapters": "true",
+        },
+        // 章节列表结束
+        // 获取章节内容
+        "contents": {
+            // 文章内容
+            "content_KV": "<div id=\"content\">(.*?)</div>",
+            // 内容替换
+            "contentReplace": {
+                "&nbsp;": ""
+            },
+        },
+    }
+}
